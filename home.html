@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Health Care</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 2px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .image-card {
+            width: 250px;
+            height: 250px;
+            margin: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+        
+        .modal-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .modal img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .image-card {
+                width: 150px;
+                height: 150px;
+            }
+           
+        }
+        #i{
+                margin-top: 10%;
+                margin-bottom: 10%;
+            }
+
+            #b{
+                text-align: center;
+                margin-left: 30%;
+            }
+            #bp{
+                margin-left: 20%;
+            }
+            nav{
+                background-color: aqua;
+            }
+           #p{
+                font-family: fantasy;
+            }
+
+    </style>
+</head>
+<body>
+    <!--Header-->
+   
+    <!--Header-->
+<nav>
+    <h1>Health Care </h1>
+</nav>
+
+    <div class="container">
+        <hr><hr>
+        <p id="p">Home therapy for checking lungs, heart, eyes, and blood pressure provides a convenient and accessible way for individuals to monitor their health in the comfort of their own homes. This approach allows for regular health assessments without the need for frequent visits to healthcare facilities. By incorporating simple and user-friendly devices, individuals can actively participate in their own healthcare management.</p>
+        <hr><hr>
+        <div id="i" class="image-gallery">
+            <div>
+            <div class="image-card" onclick="openModal('image1.jpg')">
+            <img src="data:image/jpeg;base64,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" data-deferred="1" class="rg_i Q4LuWd" jsname="Q4LuWd" width="299" height="169" alt="Exercises To Improve Lung Health" data-iml="2122.5" data-atf="true">   
+            </div>
+            <button id="b" class="btn btn-info text-uppercase btn-sm  px-3"><a style="text-decoration:none; color:rgb(27, 2, 63)"  href="lungs.html">Lungs</a></button>
+        </div>
+           <div>
+            <div class="image-card" onclick="openModal('image2.jpg')">
+                <img data-ils="4" jsaction="rcuQ6b:trigger.M8vzZb;" class="rg_i Q4LuWd" jsname="Q4LuWd" width="180" height="180" alt="Is It Possible to Have Purple Eyes? | Warby Parker" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQBqhM-t6uW2UtWN408zaRb2aI_amsSDplRC1bY-6q1w&amp;usqp=CAU&amp;ec=48665701">
+            </div>
+            <button id="b" class="btn btn-info text-uppercase btn-sm  px-3"><a style="text-decoration:none; color:rgb(27, 2, 63)"  href="eyes.html">eyes</a></button>
+        </div>
+        <div>
+            <div class="image-card" onclick="openModal('image3.jpg')">
+                <img data-ils="4" jsaction="rcuQ6b:trigger.M8vzZb;" class="rg_i Q4LuWd" jsname="Q4LuWd" width="301" height="168" alt="Heart Health Tips For A Healthy Lifestyle - HealthKart" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCL149e-0Eylas3JzAmczEbCTW7E0D-57gdkjj53ZILg&amp;usqp=CAU&amp;ec=48665701">
+            </div>
+            <button id="b" class="btn btn-info text-uppercase btn-sm  px-3"><a style="text-decoration:none; color:rgb(27, 2, 63)"  href="heart.html">Heart</a></button>
+        </div>
+        <div>
+            <div class="image-card" onclick="openModal('image3.jpg')">
+                <img data-ils="4" jsaction="rcuQ6b:trigger.M8vzZb;" class="rg_i Q4LuWd" jsname="Q4LuWd" width="261" height="180" alt="Pay Attention to Blood Pressure Fluctuations – Cleveland Clinic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-DOgg_moJ1vLbLxG4tJ4-YQfPHj3iiMllryLK5pDHtA&amp;usqp=CAU&amp;ec=48665701">
+            </div>
+            <button id="bp" class="btn btn-info text-uppercase btn-sm  px-3"><a style="text-decoration:none; color:rgb(27, 2, 63)"  href="bp.html">blood Pressure</a></button>
+        </div>
+            <!-- Add more image cards as needed -->
+        </div>
+    </div>
+    
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modal-image" src="" alt="Modal Image">
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageUrl) {
+            var modal = document.getElementById("modal");
+            var modalImage = document.getElementById("modal-image");
+            modalImage.src = imageUrl;
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+    </script>
+ <!-- footer  -->
+ <div class="container-fluid mt-4">
+    <div class="row pt-5 bg-dark py-5 px-sm-3 px-md-5 ">
+        <div class="col-lg-4 col-md-6 mb-2 text-white">
+            <h4 class="text-uppercase text-light mb-4">Get In Touch</h4>
+            <p class="mb-2 text-white"><i class="fa fa-map-marker-alt mr-3"></i> Lorem ipsum, dolor sit amet consectetur adipisicing elit, Pune-411021, Maharashtra, India</p>
+            <p class="mb-2"><i class="fa fa-phone-alt text-white mr-3"></i> +91 8794561235, 06, 07, 08, 09 </p>
+
+            <p><i class="fa fa-envelope text-white mr-3"></i> sales@HealthCare.com</p>
+            <h6 class="text-uppercase text-white py-2">Follow Us</h6>
+            <div class="d-flex justify-content-start"></div>
+               
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-2">
+            <h4 class="text-uppercase text-light mb-4">Location</h4>
+            <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.616327088521!2d73.77063449678957!3d18.51147230000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2be5ccb8c544b%3A0x1314595246950d0c!2sHealth%20Care%20Clinic!5e1!3m2!1sen!2sin!4v1686546341700!5m2!1sen!2sin" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6 mb-2 text-white">
+            <h4 class="text-uppercase text-light mb-4">News Release</h4>
+            <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo laudantium voluptates
+                dolores voluptatem quae quasi sapiente repellat ex. Fuga voluptatibus laudantium sequi cum maxime
+                praesentium laboriosam reprehenderit voluptatem aliquam repellendus!</p>
+            <div class="w-100 mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control bg-light border-dark" style="padding: 5px;"
+                        placeholder="Your Email">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary text-uppercase px-3">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row p-3 text-center" style="background-color:#bae7fa83">
+        <div class="col">
+            <h6> &copy; 2023 Health Care. All Rights Reserved.</h6>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
